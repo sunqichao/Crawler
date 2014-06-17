@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "FeiJiBaViewController.h"
 
 @implementation AppDelegate
 
@@ -16,9 +17,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    /**
+     *  AVOS
+     */
+    [AVOSCloud setApplicationId:@"h41iz01cmhtvj962zjrh01hn7hndxjaap5ih7iq5364h2x9w"
+                      clientKey:@"rqhscrmxrxc8gzebwksjj0budup26dbvq4ud05tfvjiq30ia"];
+    
+    [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    
+    UIViewController *root = nil;
+    FeiJiBaViewController *feijiba = [[FeiJiBaViewController alloc] initWithNibName:@"FeiJiBaViewController" bundle:nil];
+    root = feijiba;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = root;
     [self.window makeKeyAndVisible];
     return YES;
 }
